@@ -1,9 +1,13 @@
-# smart-micro-farm
+## 🌱 Smart Micro Farm
 Smart farming system for small farmers using simple technology and sensors.
-# 🌱 Smart Micro Farm
 
 ## 📌 Project Idea
 Smart Micro Farm is a simple and affordable system designed to help small farmers monitor their crops and animals using technology.
+
+## About the Project
+I started this project from my small farm where I currently raise chickens. This idea comes from real experience in agriculture and aims to improve farming using smart technologies.
+
+This project reflects a real-world application, not just a concept.
 
 ## 🚜 Problem
 Small farmers often rely on manual work without data, which leads to:
@@ -32,16 +36,16 @@ I am interested in combining technology with agriculture (Agri-Tech).
 
 ## 🎯 Goal
 To build a simple, low-cost smart farming solution for small farmers.
-## 🐌 New Idea: Snail Farming Integration
 
+## 🐌 New Idea: Snail Farming Integration
 As an extension of the Smart Micro Farm, we propose adding a small area for snail farming.
 
 ### Why Snails?
 - High nutritional and economic value
 - Low cost and easy to maintain
-- Not widely developed in Algeria (opportunity
+- Not widely developed  (opportunity)
+  
 - ## 💰 Direct-to-Consumer Sales Channel
-
 As part of the Smart Closed-Loop Micro Farm, we plan to launch a simple online and local shop selling:
 - Fresh natural vegetables (Bio-style)
 - Fresh eggs (chicken & quail)
@@ -56,7 +60,7 @@ Benefits:
 
 ### Benefits:
 - Additional income source for farmers
-- Efficient use of small مساحة
+- Efficient use of small 
 - Can be integrated with organic farming
 
 This makes the farm more diverse and profitable.
