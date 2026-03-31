@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Farm — Boualem</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #0a2e14;
+    --green-mid: #1a6b35;
+    --green-bright: #2d9e52;
+    --green-light: #4ecb71;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --cream: #f5f0e8;
+    --text-muted: rgba(245,240,232,0.6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--green-deep);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  .page {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 44px 30px 60px;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .header::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 18px auto 0;
+  }
+
+  .project-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .title-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px;
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1;
+    text-shadow: 0 0 50px rgba(78,203,113,0.25);
+  }
+
+  .title-main span {
+    color: var(--green-light);
+  }
+
+  .title-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-top: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* ===== MAIN GRID ===== */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 270px 1fr 270px;
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 36px;
+  }
+
+  .side-col { display: flex; flex-direction: column; gap: 14px; }
+
+  /* ===== MODULE CARDS ===== */
+  .module {
+    background: linear-gradient(145deg, rgba(26,107,53,0.25) 0%, rgba(10,46,20,0.7) 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 14px;
+    padding: 18px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .module::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(78,203,113,0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .module:hover {
+    transform: translateY(-3px);
+    border-color: rgba(201,168,76,0.45);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  }
+
+  .module:hover::after { opacity: 1; }
+
+  .module-icon {
+    font-size: 30px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .module-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 7px;
+  }
+
+  .module-desc {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  .module-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 10px;
+  }
+
+  .tag {
+    font-size: 10px;
+    padding: 2px 9px;
+    border-radius: 20px;
+    background: rgba(78,203,113,0.12);
+    border: 1px solid rgba(78,203,113,0.28);
+    color: var(--green-light);
+  }
+
+  /* ===== CENTER COLUMN ===== */
+  .center-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .center-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+  }
+
+  .farm-circle {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 32%, #2d9e52 0%, #0a2e14 65%);
+    border: 1.5px solid rgba(201,168,76,0.35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 0 70px rgba(45,158,82,0.35), inset 0 0 40px rgba(0,0,0,0.25);
+    animation: glow-pulse 4s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 70px rgba(45,158,82,0.35), inset 0 0 40px rgba(0,0,0,0.25); }
+    50% { box-shadow: 0 0 100px rgba(45,158,82,0.6), inset 0 0 40px rgba(0,0,0,0.25); }
+  }
+
+  .orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(201,168,76,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbit-spin linear infinite;
+  }
+
+  .orbit-1 { width: 330px; height: 330px; animation-duration: 28s; }
+  .orbit-2 { width: 400px; height: 400px; animation-duration: 50s; animation-direction: reverse; }
+
+  @keyframes orbit-spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .farm-emoji { font-size: 72px; line-height: 1; }
+
+  .farm-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  .farm-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+  }
+
+  /* ===== PIPELINE ===== */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+  }
+
+  .pipe-step {
+    background: rgba(26,107,53,0.3);
+    border: 1px solid rgba(78,203,113,0.25);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-size: 11px;
+    color: var(--cream);
+    text-align: center;
+    min-width: 78px;
+    line-height: 1.5;
+  }
+
+  .pipe-arrow {
+    color: var(--gold);
+    font-size: 14px;
+    padding: 0 5px;
+    opacity: 0.6;
+  }
+
+  /* ===== BADGES ===== */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 10.5px;
+    color: var(--gold-light);
+  }
+
+  /* ===== STATS BAR ===== */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(10,46,20,0.5));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 18px 10px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-unit {
+    font-size: 9.5px;
+    color: var(--green-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 3px;
+  }
+
+  .stat-label {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ===== VISION ===== */
+  .vision {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(45,158,82,0.06));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 16px;
+    padding: 22px 50px;
+    text-align: center;
+    position: relative;
+  }
+
+  .vision::before, .vision::after {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    color: var(--gold);
+    opacity: 0.25;
+    position: absolute;
+    line-height: 1;
+  }
+
+  .vision::before { top: 10px; left: 18px; }
+  .vision::after  { bottom: -10px; right: 18px; }
+
+  .vision-text {
+    font-size: 14.5px;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.85;
+  }
+
+  .vision-text strong {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 10.5px;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--green-light);
+    box-shadow: 0 0 8px var(--green-light);
+    animation: blink 2s ease-in-out infinite;
+    vertical-align: middle;
+    margin: 0 6px;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  .divider {
+    text-align: center;
+    color: rgba(201,168,76,0.3);
+    letter-spacing: 6px;
+    font-size: 12px;
+    margin: 6px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="project-label">◈ Concept Project ◈</div>
+    <div class="title-main">Smart <span>Farm</span></div>
+    <div class="title-sub">Integrated AgriTech System — Algeria</div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="main-grid">
+
+    <!-- LEFT -->
+    <div class="side-col">
+
+      <div class="module">
+        <span class="module-icon">🌳</span>
+        <div class="module-title">Fruit Tree Orchards</div>
+        <div class="module-desc">Cultivation of diverse fruit-bearing trees combining Algerian agricultural heritage with modern orchard management and precision horticulture techniques.</div>
+        <div class="module-tags">
+          <span class="tag">Olive</span>
+          <span class="tag">Fig</span>
+          <span class="tag">Pomegranate</span>
+          <span class="tag">Apricot</span>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="module-icon">🐔</span>
+        <div class="module-title">Poultry Unit</div>
+        <div class="module-desc">Integrated poultry rearing facility with automated feeding systems and continuous environmental monitoring to ensure optimal health and productivity.</div>
+        <div class="module-tags">
+          <span class="tag">Broilers</span>
+          <span class="tag">Layers</span>
+          <span class="tag">Automated</span>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="module-icon">💧</span>
+        <div class="module-title">Smart Irrigation</div>
+        <div class="module-desc">Drip irrigation network guided by soil moisture sensors and weather forecasts, cutting water consumption while ensuring ideal distribution across all sectors.</div>
+        <div class="module-tags">
+          <span class="tag">IoT Sensors</span>
+          <span class="tag">40% Saving</span>
+          <span class="tag">Drip</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CENTER -->
+    <div class="center-col">
+      <div class="center-visual">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="farm-circle">
+          <span class="farm-emoji">🌿</span>
+          <div class="farm-label">SMART FARM</div>
+          <div class="farm-sub">INTEGRATED · SUSTAINABLE · DIGITAL</div>
+        </div>
+      </div>
+
+      <div class="divider">— — — — —</div>
+
+      <div class="pipeline">
+        <div class="pipe-step">🌱<br>Produce</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">📊<br>Monitor</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">🤖<br>Automate</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">📱<br>Control</div>
+      </div>
+
+      <div class="divider">— — — — —</div>
+
+      <div class="badges">
+        <span class="badge">🇩🇿 Algeria</span>
+        <span class="badge">♻️ Circular Economy</span>
+        <span class="badge">☀️ Solar Powered</span>
+        <span class="badge">🌐 IoT Network</span>
+        <span class="badge">📲 Mobile App</span>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="side-col">
+
+      <div class="module">
+        <span class="module-icon">☀️</span>
+        <div class="module-title">Solar Energy System</div>
+        <div class="module-desc">Photovoltaic panels provide full energy self-sufficiency for all farm systems, with battery storage for surplus power and significant reduction in operating costs.</div>
+        <div class="module-tags">
+          <span class="tag">Self-sufficient</span>
+          <span class="tag">Battery Storage</span>
+          <span class="tag">Zero Emissions</span>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="module-icon">📡</span>
+        <div class="module-title">Digital Control Platform</div>
+        <div class="module-desc">A unified dashboard aggregating real-time sensor data and production KPIs, powered by predictive algorithms for yield forecasting and preventive maintenance.</div>
+        <div class="module-tags">
+          <span class="tag">Live Data</span>
+          <span class="tag">AI Forecasting</span>
+          <span class="tag">Cloud</span>
+        </div>
+      </div>
+
+      <div class="module">
+        <span class="module-icon">🏪</span>
+        <div class="module-title">Sales & Marketing</div>
+        <div class="module-desc">Direct-to-consumer sales channel via e-commerce and local outlets, connecting the farm straight to buyers and maximizing profit margins by cutting out middlemen.</div>
+        <div class="module-tags">
+          <span class="tag">E-commerce</span>
+          <span class="tag">Delivery</span>
+          <span class="tag">Organic</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <span class="stat-num">5+</span>
+      <span class="stat-unit">Years Exp.</span>
+      <span class="stat-label">Orchard & Horticulture</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">3</span>
+      <span class="stat-unit">Core Sectors</span>
+      <span class="stat-label">Trees · Poultry · Crops</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">40%</span>
+      <span class="stat-unit">Water Saved</span>
+      <span class="stat-label">Smart Drip Irrigation</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">100%</span>
+      <span class="stat-unit">Clean Energy</span>
+      <span class="stat-label">On-site Solar Source</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">24/7</span>
+      <span class="stat-unit">Monitoring</span>
+      <span class="stat-label">Via Smart Application</span>
+    </div>
+  </div>
+
+  <!-- VISION -->
+  <div class="vision">
+    <div class="vision-text">
+      <strong>Strategic Vision:</strong> Build a fully integrated Algerian agri-tech model that fuses digital technology with field expertise —
+      achieving food security, generating a scalable commercial surplus, and positioning the project as
+      an <strong>exportable smart farming blueprint</strong> for the wider region.
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="dot"></span>
+    Boualem · Smart Farm Project · 2026
+    <span class="dot"></span>
+  </div>
+
+</div>
+</body>
+</html>
