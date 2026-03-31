@@ -32,3 +32,18 @@ I am interested in combining technology with agriculture (Agri-Tech).
 
 ## 🎯 Goal
 To build a simple, low-cost smart farming solution for small farmers.
+## 🐌 New Idea: Snail Farming Integration
+
+As an extension of the Smart Micro Farm, we propose adding a small area for snail farming.
+
+### Why Snails?
+- High nutritional and economic value
+- Low cost and easy to maintain
+- Not widely developed in Algeria (opportunity for innovation)
+
+### Benefits:
+- Additional income source for farmers
+- Efficient use of small مساحة
+- Can be integrated with organic farming
+
+This makes the farm more diverse and profitable.
