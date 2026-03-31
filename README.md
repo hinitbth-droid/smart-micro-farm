@@ -39,7 +39,20 @@ As an extension of the Smart Micro Farm, we propose adding a small area for snai
 ### Why Snails?
 - High nutritional and economic value
 - Low cost and easy to maintain
-- Not widely developed in Algeria (opportunity for innovation)
+- Not widely developed in Algeria (opportunity
+- ## 💰 Direct-to-Consumer Sales Channel
+
+As part of the Smart Closed-Loop Micro Farm, we plan to launch a simple online and local shop selling:
+- Fresh natural vegetables (Bio-style)
+- Fresh eggs (chicken & quail)
+- Mushrooms
+
+This creates a short value chain "From Farm to Table" and demonstrates the economic viability of the model for small farmers.
+
+Benefits:
+- Additional income stream
+- Builds trust and brand around sustainability
+- Data from sales can feed back into the smart monitoring system (demand forecasting) for innovation)
 
 ### Benefits:
 - Additional income source for farmers
